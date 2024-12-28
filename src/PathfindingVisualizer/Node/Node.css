@@ -1,0 +1,233 @@
+/* General Node Styles */
+.node {
+    width: 25px;
+    height: 25px; 
+    outline: 1px solid #cce7f6;
+    /* Light border for better visibility */
+    background-color: rgb(188, 196, 244);
+    display: inline-block;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    /* Smooth hover effect */
+}
+
+.node:hover {
+    transform: scale(1.1);
+    /* Slight scale-up effect on hover */
+    background-color: rgba(240, 240, 240, 0.8);
+    /* Light hover effect */
+}
+
+/* Finish Node */
+.node-finish {
+    background-color: #ff4d4d;
+    /* Vibrant red for finish node */
+    border: 2px solid #cc0000;
+    /* Slightly darker border for emphasis */
+}
+
+/* Start Node */
+.node-start {
+    background-color: #4dff88;
+    /* Bright green for start node */
+    border: 2px solid #00cc44;
+    /* Slightly darker border for emphasis */
+}
+
+/* Wall Node */
+.node-wall {
+    background-color: #1c2b3d;
+    /* Deep blue for wall nodes */
+    border: 1px solid #102030;
+    /* Slightly darker border for consistency */
+}
+
+/* Visited Node Animation */
+.node-visited {
+    animation-name: visitedAnimation;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes visitedAnimation {
+    0% {
+        transform: scale(0.3);
+        background-color: rgba(30, 30, 80, 0.8);
+        /* Dark blue at the start */
+        border-radius: 100%;
+        /* Circular effect */
+    }
+
+    50% {
+        background-color: rgba(60, 140, 255, 0.8);
+        /* Blue transition */
+    }
+
+    75% {
+        transform: scale(1.2);
+        background-color: rgba(50, 200, 120, 0.8);
+        /* Greenish transition */
+    }
+
+    100% {
+        transform: scale(1);
+        background-color: rgba(30, 200, 220, 0.8);
+        /* Final blue-green color */
+    }
+}
+
+/* Shortest Path Animation */
+.node-shortest-path {
+    animation-name: shortestPath;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes shortestPath {
+    0% {
+        transform: scale(0.6);
+        background-color: #ffff80;
+        /* Bright yellow at the start */
+    }
+
+    50% {
+        transform: scale(1.2);
+        background-color: #ffd700;
+        /* Golden yellow in the middle */
+    }
+
+    100% {
+        transform: scale(1);
+        background-color: #ffc107;
+        /* Consistent golden color at the end */
+    }
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    flex-wrap: wrap; /* Wrap items to new rows on small screens */
+    align-items: center;
+    justify-content: space-between;
+    background-color: #2c3e50;
+    padding: 15px 10px;
+    color: #ffffff;
+    /* White text for contrast */
+}
+
+.navbar-controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px; /* Space between dropdowns and button */
+}
+
+
+.navbar-title {
+    font-size: 20px;
+    font-weight: bold;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.navbar-dropdown {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-dropdown label {
+    margin-right: 10px;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.dropdown {
+    padding: 5px 10px;
+    font-size: 14px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    background-color: #34495e;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.dropdown:hover {
+    background-color: #3b566e;
+}
+
+/* Button */
+.start-button {
+    padding: 8px 16px;
+    font-size: 20px;
+    background-color: #1abc9c;
+    /* Teal green */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: #ebefee;
+}
+
+.start-button:hover {
+    background-color: #16a085;
+    /* Darker teal */
+    transform: scale(1.05);
+    /* Slight scale-up on hover */
+}
+
+/* Responsive Grid Layout */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20px, 1fr)); /* Auto-fit for responsiveness */
+    gap: 1px; /* Gap between nodes */
+    margin: 20px; /* Outer margin */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .node {
+        width: 5vw; /* Slightly larger nodes on smaller screens */
+        height: 5vw;
+    }
+
+    .navbar-title {
+        font-size: 18px;
+    }
+
+    .navbar-controls {
+        gap: 10px;
+    }
+
+    .start-button {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .node {
+        width: 7vw;
+        height: 7vw;
+    }
+
+    .navbar {
+        flex-direction: column; /* Stack navigation items vertically */
+        align-items: flex-start;
+    }
+
+    .navbar-title {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .navbar-controls {
+        justify-content: flex-start;
+        gap: 8px;
+    }
+
+    .start-button {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+}
